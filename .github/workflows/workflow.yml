@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # Add any additional dependencies here if needed
+          python -m pip install requests
 
       - name: Run Automation Bot
         env:
