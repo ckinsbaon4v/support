@@ -2,12 +2,13 @@ name: GitHub Issue Automation Bot
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # Runs every 15 minutes
-  workflow_dispatch: # Allows manual triggering
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+    timeout-minutes: 10 # Prevents the bot from running non-stop
     permissions:
       issues: write
       contents: read
@@ -20,11 +21,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install requests
 
       - name: Run Automation Bot
         env:
